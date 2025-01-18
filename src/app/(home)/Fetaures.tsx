@@ -39,45 +39,45 @@ export function Features() {
           key={index}
           className={`min-h-screen flex items-center justify-center ${feature.bgColor}`}
         >
-          <div className="container px-4 md:px-6 max-w-7xl mx-auto">
+          <div className="container px-4 md:px-6 max-w-7xl mx-auto py-12 md:py-24">
             {index % 4 === 0 && (
               // Layout 1: Side by side with image on right
               <motion.div
-                className="flex flex-col md:flex-row items-center justify-between gap-12"
+                className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="flex-1 text-left">
+                <div className="flex-1 text-center md:text-left">
                   <div className="inline-block bg-white rounded-full p-4 mb-6 shadow-lg">
                     {feature.icon}
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[#2F4F2F]">{feature.title}</h2>
-                  <p className="text-xl md:text-2xl text-[#4A3220] mb-8" dangerouslySetInnerHTML={{ __html: feature.description }} />
-                  <Button size="lg" className="bg-[#2F4F2F] hover:bg-[#3A6A3A] text-white">Learn More</Button>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-[#2F4F2F]">{feature.title}</h2>
+                  <p className="text-lg sm:text-xl md:text-2xl text-[#4A3220] mb-6 md:mb-8" dangerouslySetInnerHTML={{ __html: feature.description }} />
+                  <Button size="lg" className="bg-[#2F4F2F] hover:bg-[#3A6A3A] text-white w-full md:w-auto">Learn More</Button>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 w-full md:w-auto mb-8 md:mb-0">
                   <motion.div
-                    className="w-full h-[400px] bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] rounded-lg shadow-2xl relative overflow-hidden"
+                    className="w-full h-[300px] md:h-[400px] bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] rounded-lg shadow-2xl relative overflow-hidden"
                     initial={{ scale: 0.8 }}
                     whileInView={{ scale: 1 }}
                   >
                     {/* Film Strip Top */}
                     <motion.div
-                      className="absolute top-0 left-0 right-0 h-12 flex"
+                      className="absolute top-0 left-0 right-0 h-8 md:h-12 flex"
                       initial={{ x: -100 }}
                       whileInView={{ x: 0 }}
                       transition={{ delay: 0.3 }}
                     >
                       {[...Array(8)].map((_, i) => (
-                        <div key={i} className="w-12 h-12 border-2 border-[#4A3220] flex-shrink-0 bg-[#2F4F2F]/20" />
+                        <div key={i} className="w-8 md:w-12 h-8 md:h-12 border-2 border-[#4A3220] flex-shrink-0 bg-[#2F4F2F]/20" />
                       ))}
                     </motion.div>
 
                     {/* Camera Body */}
                     <motion.div
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-56 h-40 bg-gradient-to-br from-[#2F4F2F] to-[#1a1a1a] rounded-lg shadow-2xl"
+                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 md:w-56 h-28 md:h-40 bg-gradient-to-br from-[#2F4F2F] to-[#1a1a1a] rounded-lg shadow-2xl"
                       initial={{ scale: 0, rotateY: -180 }}
                       whileInView={{ scale: 1, rotateY: 0 }}
                       transition={{ delay: 0.5, duration: 0.8 }}
@@ -85,7 +85,7 @@ export function Features() {
 
                     {/* Camera Lens */}
                     <motion.div
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full"
+                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 md:w-24 h-16 md:h-24 rounded-full"
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       transition={{ delay: 1.3 }}
@@ -112,13 +112,13 @@ export function Features() {
 
                     {/* Film Strip Bottom */}
                     <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-12 flex"
+                      className="absolute bottom-0 left-0 right-0 h-8 md:h-12 flex"
                       initial={{ x: 100 }}
                       whileInView={{ x: 0 }}
                       transition={{ delay: 0.3 }}
                     >
                       {[...Array(8)].map((_, i) => (
-                        <div key={i} className="w-12 h-12 border-2 border-[#4A3220] flex-shrink-0 bg-[#2F4F2F]/20" />
+                        <div key={i} className="w-8 md:w-12 h-8 md:h-12 border-2 border-[#4A3220] flex-shrink-0 bg-[#2F4F2F]/20" />
                       ))}
                     </motion.div>
 
@@ -126,7 +126,7 @@ export function Features() {
                     {[...Array(3)].map((_, i) => (
                       <motion.div
                         key={i}
-                        className="absolute w-24 h-20 bg-white/90 rounded-sm shadow-xl"
+                        className="absolute w-16 md:w-24 h-14 md:h-20 bg-white/90 rounded-sm shadow-xl"
                         initial={{
                           x: -100,
                           y: 100,
@@ -149,13 +149,13 @@ export function Features() {
 
             {index % 4 === 1 && (
               <motion.div
-                className="grid md:grid-cols-2 gap-12 items-center"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="w-full h-[300px] rounded-lg shadow-2xl relative overflow-hidden">
+                <div className="w-full h-[250px] sm:h-[300px] rounded-lg shadow-2xl relative overflow-hidden">
                   <Image
                     width={1000}
                     height={1000}
@@ -165,18 +165,18 @@ export function Features() {
                   />
                 </div>
 
-                <div className="text-right">
-                  <div className="inline-block bg-white/90 backdrop-blur rounded-full p-4 mb-6 shadow-lg">
+                <div className="text-center md:text-right">
+                  <div className="inline-block bg-white/90 backdrop-blur rounded-full p-4 mb-4 md:mb-6 shadow-lg">
                     {feature.icon}
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-800">{feature.title}</h2>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white">{feature.title}</h2>
                 </div>
-                <div className="text-left">
-                  <p className="text-xl md:text-2xl text-gray-700 mb-8" dangerouslySetInnerHTML={{ __html: feature.description }} />
-                  <Button size="lg" className="bg-[#2F4F2F] hover:bg-[#3A6A3A] text-white">Learn More</Button>
+                <div className="text-center md:text-left">
+                  <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 md:mb-8" dangerouslySetInnerHTML={{ __html: feature.description }} />
+                  <Button size="lg" className="bg-[#2F4F2F] hover:bg-[#3A6A3A] text-white w-full md:w-auto">Learn More</Button>
                 </div>
 
-                <div className="w-full h-[300px] rounded-lg shadow-2xl relative overflow-hidden">
+                <div className="w-full h-[250px] sm:h-[300px] rounded-lg shadow-2xl relative overflow-hidden">
                   <Image
                     width={1000}
                     height={1000}
@@ -192,32 +192,32 @@ export function Features() {
             {index % 4 === 2 && (
               // Layout 3: Side by side with image on left
               <motion.div
-                className="flex flex-col md:flex-row-reverse items-center justify-between gap-12"
+                className="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <div className="flex-1 text-right">
-                  <div className="inline-block bg-[#CD853F] rounded-full p-4 mb-6 shadow-lg">
+                <div className="flex-1 text-center md:text-right">
+                  <div className="inline-block bg-[#CD853F] rounded-full p-4 mb-4 md:mb-6 shadow-lg">
                     {feature.icon}
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">{feature.title}</h2>
-                  <p className="text-xl md:text-2xl text-white mb-8" dangerouslySetInnerHTML={{ __html: feature.description }} />
-                  <Button size="lg" className="bg-[#CD853F] hover:bg-[#8B4513] text-white">Learn More</Button>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white">{feature.title}</h2>
+                  <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 md:mb-8" dangerouslySetInnerHTML={{ __html: feature.description }} />
+                  <Button size="lg" className="bg-[#CD853F] hover:bg-[#8B4513] text-white w-full md:w-auto">Learn More</Button>
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 w-full md:w-auto">
                   <motion.div
-                    className="w-full h-[400px] bg-gradient-to-br from-[#8B4513] to-[#2F4F2F] rounded-lg shadow-2xl relative overflow-hidden"
+                    className="w-full h-[300px] md:h-[400px] bg-gradient-to-br from-[#8B4513] to-[#2F4F2F] rounded-lg shadow-2xl relative overflow-hidden"
                     initial={{ scale: 0.8 }}
                     whileInView={{ scale: 1 }}
                   >
                     {/* Hexagonal Money Pattern */}
                     <div className="absolute inset-0">
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <div className="relative w-80 h-80">
+                        <div className="relative w-60 md:w-80 h-60 md:h-80">
                           {/* Center Dollar Symbol */}
-                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl font-bold text-[#CD853F]">
+                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl md:text-8xl font-bold text-[#CD853F]">
                             $
                           </div>
 
@@ -225,14 +225,14 @@ export function Features() {
                           {[...Array(6)].map((_, i) => (
                             <div
                               key={i}
-                              className="absolute w-32 h-32"
+                              className="absolute w-24 md:w-32 h-24 md:h-32"
                               style={{
-                                top: Math.sin((i * Math.PI * 2) / 6) * 120 + 120,
-                                left: Math.cos((i * Math.PI * 2) / 6) * 120 + 120,
+                                top: Math.sin((i * Math.PI * 2) / 6) * (window.innerWidth < 768 ? 90 : 120) + (window.innerWidth < 768 ? 90 : 120),
+                                left: Math.cos((i * Math.PI * 2) / 6) * (window.innerWidth < 768 ? 90 : 120) + (window.innerWidth < 768 ? 90 : 120),
                               }}
                             >
                               <div className="w-full h-full bg-[#CD853F]/20 backdrop-blur-sm rounded-xl transform rotate-45 border border-[#CD853F]/30" />
-                              <div className="absolute inset-0 flex items-center justify-center text-2xl text-[#CD853F]">
+                              <div className="absolute inset-0 flex items-center justify-center text-xl md:text-2xl text-[#CD853F]">
                                 {['$', '¢', '£', '€', '¥', '₿'][i]}
                               </div>
                             </div>
@@ -256,21 +256,21 @@ export function Features() {
             {index % 4 === 3 && (
               // Layout 4: Grid layout
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
                 <div className="text-center md:text-left order-2 md:order-1">
-                  <div className="inline-block bg-white rounded-full p-4 mb-6 shadow-lg">
+                  <div className="inline-block bg-white rounded-full p-4 mb-4 md:mb-6 shadow-lg">
                     {feature.icon}
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">{feature.title}</h2>
-                  <p className="text-xl md:text-2xl text-white mb-8" dangerouslySetInnerHTML={{ __html: feature.description }} />
-                  <Button size="lg" className="bg-[#CD853F] hover:bg-[#8B4513] text-white">Learn More</Button>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white">{feature.title}</h2>
+                  <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 md:mb-8" dangerouslySetInnerHTML={{ __html: feature.description }} />
+                  <Button size="lg" className="bg-[#CD853F] hover:bg-[#8B4513] text-white w-full md:w-auto">Learn More</Button>
                 </div>
-                <div className="grid grid-cols-2 gap-4 order-1 md:order-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 order-1 md:order-2">
                   {/* Themed Cards */}
                   {[
                     {
@@ -296,15 +296,15 @@ export function Features() {
                   ].map((card, i) => (
                     <motion.div
                       key={i}
-                      className={`h-[200px] ${card.bg} rounded-lg shadow-xl relative overflow-hidden group`}
+                      className={`h-[150px] sm:h-[200px] ${card.bg} rounded-lg shadow-xl relative overflow-hidden group`}
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       transition={{ delay: 0.1 * i }}
                     >
                       {/* Content */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-5xl mb-4">{card.icon}</span>
-                        <span className="text-xl font-bold text-[#F5F5F5]">{card.text}</span>
+                        <span className="text-4xl sm:text-5xl mb-2 sm:mb-4">{card.icon}</span>
+                        <span className="text-lg sm:text-xl font-bold text-[#F5F5F5]">{card.text}</span>
                       </div>
                     </motion.div>
                   ))}
