@@ -242,59 +242,102 @@ export default function HowItWorks() {
                   >
                     {/* Credit Card Animation */}
                     <motion.div
-                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 md:w-96 h-44 md:h-56 bg-gradient-to-br from-[#2F4F2F] to-[#CD853F] rounded-2xl shadow-2xl"
+                      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 md:w-96 h-44 md:h-56 bg-gradient-to-br from-[#2F4F2F] to-[#CD853F] rounded-2xl shadow-2xl p-6"
                       initial={{ rotateY: 180, scale: 0.8, z: -100 }}
                       whileInView={{
-                        rotateY: [180, 0, -10, 0],
-                        scale: [0.8, 1, 1.05, 1],
-                        z: [-100, 0]
+                        rotateY: [180, 0],
+                        scale: 1,
+                        z: 0
                       }}
                       transition={{
-                        duration: 1.8,
-                        times: [0, 0.6, 0.8, 1],
+                        duration: 1,
                         type: "spring",
                         stiffness: 100
                       }}
                     >
-                      {/* Card Chip */}
+                      {/* Bank Logo */}
                       <motion.div
-                        className="absolute top-12 left-8 w-12 h-10 bg-[#8B4513] rounded-lg"
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: [0, 1.2, 1] }}
-                        transition={{ delay: 1, duration: 0.5 }}
+                        className="absolute top-6 right-6 text-white/90 text-xl font-bold"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 1 }}
+                      >
+                        JUNKBANK
+                      </motion.div>
+
+                      {/* EMV Chip */}
+                      <motion.div
+                        className="absolute top-16 left-6 w-12 h-10"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 1.2 }}
+                      >
+                        <div className="w-full h-full bg-[#8B4513] rounded-md grid grid-cols-3 grid-rows-3 gap-[1px] p-[2px]">
+                          {[...Array(9)].map((_, i) => (
+                            <div key={i} className="bg-[#CD853F]/60" />
+                          ))}
+                        </div>
+                      </motion.div>
+
+                      {/* Card Number */}
+                      <motion.div
+                        className="absolute top-32 left-6 flex gap-4"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 1.4 }}
+                      >
+                        {['4929', '****', '****', '1234'].map((group, i) => (
+                          <div key={i} className="text-white/90 font-mono text-lg md:text-xl">
+                            {group}
+                          </div>
+                        ))}
+                      </motion.div>
+
+                      {/* Cardholder Name & Expiry */}
+                      <div className="absolute bottom-6 left-6 right-6 flex justify-between">
+                        <motion.div
+                          className="text-white/90 font-mono"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ delay: 1.6 }}
+                        >
+                          JOHN DOE
+                        </motion.div>
+                        <motion.div
+                          className="text-white/90 font-mono"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ delay: 1.8 }}
+                        >
+                          12/25
+                        </motion.div>
+                      </div>
+
+                      {/* Hologram Effect */}
+                      <motion.div
+                        className="absolute right-12 bottom-12 w-16 h-16 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                        animate={{
+                          opacity: [0.2, 0.5, 0.2],
+                          scale: [0.8, 1.1, 0.8],
+                          rotate: [0, 360]
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "linear"
+                        }}
                       />
 
-                      {/* Card Numbers */}
-                      {[...Array(4)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          className="absolute top-32 h-4 bg-[#8B4513] rounded-full"
-                          style={{ left: 32 + i * 64, width: 48 }}
-                          initial={{ opacity: 0, x: -20, scale: 0 }}
-                          whileInView={{
-                            opacity: 1,
-                            x: 0,
-                            scale: [0, 1.1, 1]
-                          }}
-                          transition={{
-                            delay: 1.2 + i * 0.15,
-                            duration: 0.4,
-                            type: "spring"
-                          }}
-                        />
-                      ))}
-
-                      {/* Card Shine Effect */}
+                      {/* Card Surface Reflection */}
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0"
+                        className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"
                         animate={{
-                          opacity: [0, 0.3, 0],
-                          x: [-500, 500]
+                          opacity: [0, 0.1, 0]
                         }}
                         transition={{
                           duration: 2,
                           repeat: Infinity,
-                          repeatDelay: 3
+                          repeatType: "reverse"
                         }}
                       />
                     </motion.div>
@@ -312,11 +355,10 @@ export default function HowItWorks() {
                       <motion.div
                         className="text-[#CD853F] text-6xl"
                         animate={{
-                          scale: [1, 1.1, 1],
-                          rotate: [0, 5, 0, -5, 0]
+                          scale: [1, 1.1, 1]
                         }}
                         transition={{
-                          duration: 2,
+                          duration: 1,
                           repeat: Infinity,
                           repeatDelay: 1
                         }}
@@ -331,62 +373,89 @@ export default function HowItWorks() {
                     initial={{ scale: 0.8 }}
                     whileInView={{ scale: 1 }}
                   >
-                    {/* Road */}
-                    <motion.div
-                      className="absolute bottom-0 w-full h-20 bg-[#2d2d2d]"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {/* Road Markings */}
-                      {[...Array(6)].map((_, i) => (
+                    {/* Sky with Moving Clouds */}
+                    <motion.div className="absolute inset-0 bg-gradient-to-b from-[#4A3220] to-[#8B4513]">
+                      {[...Array(5)].map((_, i) => (
                         <motion.div
                           key={i}
-                          className="absolute top-1/2 h-2 w-12 bg-[#CD853F]/50"
-                          style={{ left: `${i * 20}%` }}
+                          className="absolute h-12 bg-white/10 rounded-full blur-md"
+                          style={{
+                            width: 100 + i * 50,
+                            top: 20 + i * 30,
+                          }}
                           animate={{
-                            x: [-100, 400],
-                            opacity: [0, 1, 0]
+                            x: [-200, window.innerWidth],
+                            opacity: [0.4, 0.6, 0.4]
                           }}
                           transition={{
-                            duration: 2,
+                            duration: 15 + i * 5,
                             repeat: Infinity,
-                            delay: i * 0.2
+                            delay: i * 2
                           }}
                         />
                       ))}
                     </motion.div>
 
-                    {/* Truck Animation */}
+                    {/* Road with Perspective */}
                     <motion.div
-                      className="absolute bottom-20 w-48 md:w-64 h-32 md:h-40"
-                      initial={{ x: -200 }}
-                      whileInView={{
-                        x: [null, 400],
-                      }}
-                      transition={{
-                        duration: 2,
-                        ease: "easeInOut",
-                        repeat: Infinity,
-                        repeatDelay: 1
+                      className="absolute bottom-0 w-full h-40 bg-[#2d2d2d]"
+                      style={{
+                        perspective: "1000px",
+                        transformStyle: "preserve-3d",
+
                       }}
                     >
-                      {/* Truck Body */}
-                      <motion.div
-                        className="absolute bottom-0 w-full h-24 bg-gradient-to-r from-[#CD853F] to-[#8B4513] rounded-lg shadow-lg"
-                        animate={{
-                          y: [-2, 2, -2]
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          repeat: Infinity
-                        }}
-                      >
-                        {/* Truck Window */}
+                      {/* Road Markings with Perspective */}
+                      {[...Array(8)].map((_, i) => (
                         <motion.div
-                          className="absolute top-2 right-2 w-8 h-8 bg-[#2F4F2F]/80 rounded"
+                          key={i}
+                          className="absolute w-2 bg-[#CD853F]"
+                          style={{
+                            height: 20,
+                            bottom: 70, // Moved up by increasing bottom value
+                            left: "50%",
+                            transform: `translateY(-50%) translateX(-50%)`,
+                            transformStyle: "preserve-3d",
+                          }}
                           animate={{
-                            opacity: [0.5, 0.8, 0.5]
+                            scaleX: [1, 2],
+                            x: [300, -300]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: i * 0.2,
+                            ease: "linear"
+                          }}
+                        />
+                      ))}
+                    </motion.div>
+
+                    {/* Truck with Enhanced Details */}
+                    <motion.div
+                      className="absolute bottom-20 w-64 h-48"
+                      style={{ left: "30%" }}
+                      animate={{
+                        y: [-2, 2, -2]
+                      }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      {/* Truck Cabin */}
+                      <motion.div
+                        className="absolute bottom-0 left-0 w-24 h-20 bg-gradient-to-r from-[#CD853F] to-[#8B4513] rounded-lg"
+                        style={{ boxShadow: "0 4px 6px rgba(0,0,0,0.3)" }}
+                      >
+                        {/* Windshield */}
+                        <div className="absolute top-2 right-2 w-12 h-10 bg-[#2F4F2F]/80 rounded-sm transform skew-x-12" />
+                        {/* Headlight */}
+                        <motion.div
+                          className="absolute bottom-4 left-2 w-4 h-4 bg-yellow-200 rounded-full"
+                          animate={{
+                            opacity: [0.5, 1, 0.5]
                           }}
                           transition={{
                             duration: 1,
@@ -395,66 +464,104 @@ export default function HowItWorks() {
                         />
                       </motion.div>
 
-                      {/* Truck Cabin */}
+                      {/* Truck Body */}
                       <motion.div
-                        className="absolute bottom-0 left-0 w-20 h-16 bg-gradient-to-r from-[#8B4513] to-[#CD853F] rounded-lg shadow-lg"
-                        animate={{
-                          y: [-1, 1, -1]
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          repeat: Infinity
-                        }}
-                      />
-
-                      {/* Wheels with Spokes */}
-                      {[...Array(2)].map((_, i) => (
+                        className="absolute bottom-0 left-20 w-44 h-32 bg-gradient-to-r from-[#8B4513] to-[#CD853F] rounded-lg"
+                        style={{ boxShadow: "0 4px 6px rgba(0,0,0,0.3)" }}
+                      >
+                        {/* Company Logo */}
                         <motion.div
-                          key={i}
-                          className="absolute bottom-0 w-10 h-10 bg-[#2F4F2F] rounded-full border-4 border-[#CD853F]"
-                          style={{ left: i === 0 ? 12 : 'auto', right: i === 1 ? 12 : 'auto' }}
-                          animate={{ rotate: 360 }}
+                          className="absolute top-4 left-4 text-white font-bold text-xl"
+                          animate={{
+                            opacity: [0.8, 1, 0.8]
+                          }}
                           transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            ease: "linear"
+                            duration: 2,
+                            repeat: Infinity
                           }}
                         >
-                          {/* Wheel Spokes */}
-                          {[...Array(4)].map((_, j) => (
-                            <motion.div
-                              key={j}
-                              className="absolute top-1/2 left-1/2 w-1 h-4 bg-[#CD853F]"
-                              style={{
-                                transform: `translate(-50%, -50%) rotate(${j * 45}deg)`
-                              }}
-                            />
-                          ))}
+                        Malarkey Junk
+                        </motion.div>
+                      </motion.div>
+
+                      {/* Wheels with Dynamic Animation */}
+                      {[...Array(4)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="absolute bottom-[-8px] w-12 h-12"
+                          style={{
+                            left: i < 2 ? 8 + i * 16 : 36 + i * 16
+                          }}
+                        >
+                          <motion.div
+                            className="w-full h-full rounded-full bg-[#2F4F2F] border-4 border-[#CD853F]"
+                            animate={{ rotate: 360 }}
+                            transition={{
+                              duration: 0.5,
+                              repeat: Infinity,
+                              ease: "linear"
+                            }}
+                          >
+                            {/* Wheel Spokes */}
+                            {[...Array(6)].map((_, j) => (
+                              <motion.div
+                                key={j}
+                                className="absolute top-1/2 left-1/2 w-1 h-4 bg-[#CD853F]"
+                                style={{
+                                  transform: `translate(-50%, -50%) rotate(${j * 60}deg)`
+                                }}
+                              />
+                            ))}
+                          </motion.div>
                         </motion.div>
                       ))}
                     </motion.div>
 
-                    {/* Enhanced Dust Cloud Effect */}
-                    {[...Array(8)].map((_, i) => (
+                    {/* Enhanced Dust and Debris Effects */}
+                    {[...Array(12)].map((_, i) => (
                       <motion.div
                         key={i}
-                        className="absolute bottom-16 left-0"
-                        initial={{ x: -200, opacity: 0 }}
-                        whileInView={{
-                          x: [null, 400],
+                        className="absolute"
+                        style={{
+                          bottom: 20 + Math.random() * 40,
+                          left: "60%"
+                        }}
+                        initial={{ x: 0, y: 0, opacity: 0 }}
+                        animate={{
+                          x: [0, 100 + i * 20],
+                          y: [-20 - i * 10, -40 - i * 15],
                           opacity: [0, 0.8, 0],
-                          y: [0, -20 - i * 8, -40 - i * 8],
-                          scale: [0.5, 1 + i * 0.1, 1.5 + i * 0.1]
+                          scale: [0.5, 1 + i * 0.1]
                         }}
                         transition={{
                           duration: 2,
-                          delay: i * 0.15,
                           repeat: Infinity,
-                          repeatDelay: 1
+                          delay: i * 0.1
                         }}
                       >
-                        <div className={`w-4 h-4 rounded-full bg-[#CD853F]/${30 - i * 3}`} />
+                        <div className={`w-2 h-2 rounded-full bg-[#CD853F]/${40 - i * 2}`} />
                       </motion.div>
+                    ))}
+
+                    {/* Environmental Particles */}
+                    {[...Array(20)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-white/20"
+                        style={{
+                          left: Math.random() * 100 + "%",
+                          top: Math.random() * 100 + "%"
+                        }}
+                        animate={{
+                          opacity: [0, 1, 0],
+                          scale: [0, 1, 0]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: Math.random() * 2
+                        }}
+                      />
                     ))}
                   </motion.div>
                 )}

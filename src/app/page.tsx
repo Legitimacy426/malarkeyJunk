@@ -10,9 +10,9 @@ export default function Home() {
     <main className="relative">
       <Header />
       <Hero />
-      <HowItWorks />
-      <Features />
 
+      <Features />
+ <HowItWorks />
       <TestimonialsScattered />
       <Footer />
     </main>
