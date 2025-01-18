@@ -23,12 +23,27 @@ export default function Chat() {
   const [step, setStep] = useState<'photo' | 'location' | 'schedule' | 'payment'>('photo')
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+  const messagesContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    scrollToBottom()
+    // Force scroll to bottom on mount with a slight delay
+    setTimeout(() => {
+      if (messagesContainerRef.current) {
+        const container = messagesContainerRef.current
+        container.scrollTop = container.scrollHeight
+      }
+    }, 100) // Small delay to ensure content is rendered
+  }, [])
+
+  useEffect(() => {
+    // Smooth scroll for new messages
+    if (messagesContainerRef.current) {
+      const container = messagesContainerRef.current
+      container.scrollTo({
+        top: container.scrollHeight,
+        behavior: "smooth"
+      })
+    }
   }, [messages])
 
   const handlePhotoUpload = () => {
@@ -86,7 +101,7 @@ export default function Chat() {
       <div className="flex justify-between items-center p-4 border-b">
         <h2 className="text-2xl font-bold text-[#2F4F2F]">Malarkey Chat</h2>
       </div>
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F5F5F5]">
+      <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#F5F5F5]">
         <AnimatePresence>
           {messages.map((message, index) => (
             <motion.div
