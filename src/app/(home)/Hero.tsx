@@ -1,8 +1,8 @@
 'use client'
 
 import { motion, useAnimation } from 'framer-motion'
-
 import { useEffect } from 'react'
+import Chat from './Chat'
 
 const FloatingTrash = ({ delay = 0, x = 0, y = 0, color = "#8B4513" }) => (
   <motion.div
@@ -92,18 +92,19 @@ export default function Hero() {
   }, [buttonControls])
 
   return (
-    <section className="w-full min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#F5F5F5] via-[#E8E0D5] to-[#D4C5B5]">
+    <section className="w-full min-h-screen pt-20 flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-[#F5F5F5] via-[#E8E0D5] to-[#D4C5B5]">
       <JunkYardSVG />
       <FloatingTrash delay={0} x={100} y={200} color="#8B4513" />
       <FloatingTrash delay={1} x={-200} y={300} color="#2F4F2F" />
       <FloatingTrash delay={2} x={300} y={150} color="#CD853F" />
 
-      <div className="container px-4 md:px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="flex flex-col items-center space-y-8 text-center max-w-4xl mx-auto"
+      <div className="container px-4 md:px-6 relative z-10 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="flex flex-col items-center lg:items-start space-y-8 text-center lg:text-left"
         >
           <motion.div
             initial={{ scale: 0.9, rotateX: 45 }}
@@ -152,24 +153,16 @@ export default function Hero() {
             </motion.span>.
           </motion.p>
 
-          <motion.button
-            className="shiny-button relative overflow-hidden bg-[#2F4F2F] text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group"
-            whileHover={{ scale: 1.05, backgroundColor: "#3A6A3A" }}
-            whileTap={{ scale: 0.95 }}
-            animate={buttonControls}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="w-full max-w-2xl mx-auto lg:ml-auto lg:-mt-12"
           >
-            <span className="flex items-center gap-2 relative z-10">
-
-              Start Chatting
-            </span>
-            <motion.div
-              className="absolute inset-0 bg-white opacity-10"
-              initial={{ scale: 0, borderRadius: "100%" }}
-              whileHover={{ scale: 1.5 }}
-              transition={{ duration: 0.6 }}
-            />
-          </motion.button>
-        </motion.div>
+            <Chat />
+          </motion.div>
+        </div>
       </div>
     </section>
   )

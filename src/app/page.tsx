@@ -1,22 +1,18 @@
-import Hero from './(home)/Hero'
-import Testimonials from './(home)/Testimonials'
-import Footer from './(home)/Footer'
-import ChatFab from './(home)/ChatFab'
-import { Features } from './(home)/Fetaures'
 import Header from './(home)/Header'
+import Hero from './(home)/Hero'
+import { Features, HowItWorks } from './(home)/Fetaures'
+import TestimonialsScattered from './(home)/Testimonials'
+import Footer from './(home)/Footer'
+
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
       <Header />
       <Hero />
-
       <Features />
-
-      <Testimonials />
-
+      <HowItWorks />
+      <TestimonialsScattered />
       <Footer />
-      <ChatFab />
     </main>
   )
 }
-

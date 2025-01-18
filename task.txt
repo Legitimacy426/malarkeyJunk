@@ -1,0 +1,67 @@
+A junk removal service platform. Strictly chat for end users.
+
+	1.	Product Overview
+Core Value Proposition:
+	•	Provide instant quotes and streamlined junk removal booking via a chat-first web application, powered by AI-driven photo estimates.
+	•	Enable customers to get same-day or scheduled junk removal services without phone calls or slow back-and-forth estimate processes.
+Target Users:
+	•	Primary: Individuals and businesses seeking junk removal services (e.g., homeowners, multi-unit property management firms, waste management companies).
+	•	Secondary: Junk retrieval experts (service providers) who need an admin panel to manage jobs and workflows.
+	2.	Key Features & Functionality
+Customer App (Chat-First, Mobile-Responsive Web)
+	1.	Photo-Based Estimation
+	•	AI calculates approximate dimensions, weight, and volume from uploaded images.
+	•	Multiple required photo angles: wide shot, medium shot, tight shot.
+	•	Minimum photo quality requirement: at least one clear wide shot of the area.
+	•	Manual input option if AI cannot determine item details.
+	2.	Location & Scheduling
+	•	Location services using Mapbox integration for address and map data.
+	•	Same-day service (within 6 hours) at an extra fee; next-day or scheduled services also available.
+	•	Address verification via both user input and GPS.
+	3.	Pricing Model
+	•	Quote calculation uses size, location, and timing.
+	•	Special category charges for electronics, furniture, etc.
+	•	No surge pricing.
+	•	Minimum job size: one-item pickup for a flat fee.
+	4.	Payment & Booking
+	•	Chat flow handles credit, debit, Venmo, Zelle, and CashApp; Stripe for primary credit/debit processor.
+	•	50% refund if canceled within 8 hours of scheduled service.
+	•	Full payment required upon agreement of service.
+	5.	Landing Page with Chat-First Experience
+	•	The app's public landing page immediately starts a chat that guides users to upload photos, confirm location, schedule, and pay.
+	•	All user interactions (payments, auth, location, search) occur within this chat flow, providing a frictionless experience.
+Service Provider Admin Panel
+	1.	Job Management
+	•	Service providers receive and accept jobs within a 5-minute acceptance window.
+	•	Automatic job routing to the nearest available service provider.
+	•	Option for 1-person or 2-person (or more) teams.
+	2.	Equipment & Capacity Tracking
+	•	Select vehicle type (truck & trailer, van, box truck, pickup).
+	•	Track maximum load sizes (1 item, 4 cubic yards, 8 cubic yards, 16 cubic yards, or no limit).
+	•	Identify special equipment needs (e.g., lift gate).
+	3.	Advanced Admin Functions
+	•	Detailed job schedules and reports.
+	•	Payment and invoice management.
+	•	Communication logs, service history, and dispute handling.
+	3.	MVP Requirements (Priority 1)
+	1.	AI-Driven Quote Creation (based on photos and manual inputs).
+	2.	Chat-based Acceptance, Payment, and Dispatch Workflow.
+	3.	Job Completion and Proof of Service (photo or confirmation in chat).
+	4.	Automated Notifications (job start, in-progress, completion).
+	4.	Integration Requirements
+	•	Payment Processor: Stripe
+	•	Mapping & Navigation: Mapbox (replacing Google)
+	•	Chat & SMS: Twilio or similar for notifications
+	•	AI Image Processing / Multimodal Chat: OpenAI, Claude, or comparable
+	•	Automation: n8n used to trigger workflows, such as:
+• Sending follow-up messages after job completion
+• Updating CRM/lead data automatically
+• Generating invoices and receipts
+• Dispatching notifications to service providers and customers
+	5.	Additional Considerations & Implementation Approach
+	•	Mobile-Responsive Design: Ensure the web app is optimized for both mobile and desktop.
+	•	Photo & Media Handling: Users can upload images in the chat; AI processes them in real time for dimension/weight/volume estimates.
+	•	Future Features:
+• Add advanced user account management and search.
+• Expand service areas or allow multiple region-based providers.
+	•	Security & Compliance: Protect user data, securely store payment details, and stay compliant with relevant laws.

@@ -5,7 +5,7 @@ import { Facebook, Twitter, Instagram, MapPin, Phone, Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="w-full py-12 bg-[#2F4F2F] text-white">
+    <footer id="contact" className="w-full py-12 bg-[#2F4F2F] text-white scroll-mt-20">
       <div className="container px-4 md:px-6 mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -29,10 +29,9 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              <li><Link href="#" className="text-sm hover:text-[#CD853F] transition-colors duration-200">About Us (It&apos;s No <span className="underlined-pun">Rubbish</span>)</Link></li>
-              <li><Link href="#" className="text-sm hover:text-[#CD853F] transition-colors duration-200">Services (We&apos;re <span className="underlined-pun">Garbage</span> Pros)</Link></li>
-              <li><Link href="#" className="text-sm hover:text-[#CD853F] transition-colors duration-200">Pricing (No Trashy Deals)</Link></li>
-              <li><Link href="#" className="text-sm hover:text-[#CD853F] transition-colors duration-200">Contact (Let&apos;s Talk <span className="underlined-pun">Trash</span>)</Link></li>
+              <li><Link href="#about" className="text-sm hover:text-[#CD853F] transition-colors duration-200">About Us (It&apos;s No <span className="underlined-pun">Rubbish</span>)</Link></li>
+              <li><Link href="#services" className="text-sm hover:text-[#CD853F] transition-colors duration-200">Services (We&apos;re <span className="underlined-pun">Garbage</span> Pros)</Link></li>
+              <li><Link href="#contact" className="text-sm hover:text-[#CD853F] transition-colors duration-200">Contact (Let&apos;s Talk <span className="underlined-pun">Trash</span>)</Link></li>
               <li><Link href="#" className="text-sm hover:text-[#CD853F] transition-colors duration-200">Blog (Daily Dump)</Link></li>
               <li><Link href="#" className="text-sm hover:text-[#CD853F] transition-colors duration-200">FAQs (Got Questions?)</Link></li>
             </ul>

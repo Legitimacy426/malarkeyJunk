@@ -19,14 +19,31 @@ export default function Header() {
   }, [])
 
   const navItems = [
-    { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ]
 
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+        e.preventDefault();
+        const id = target.getAttribute('href')?.slice(1);
+        const element = document.getElementById(id || '');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          setIsMobileMenuOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleClick);
+    return () => document.removeEventListener('click', handleClick);
+  }, []);
+
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 w-full z-[100] transition-all duration-300 ${
       isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 md:px-6">
