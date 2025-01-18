@@ -66,8 +66,8 @@ export function Features() {
                               key={i}
                               className="absolute w-24 md:w-32 h-24 md:h-32"
                               style={{
-                                top: Math.sin((i * Math.PI * 2) / 6) * (window.innerWidth < 768 ? 90 : 120) + (window.innerWidth < 768 ? 90 : 120),
-                                left: Math.cos((i * Math.PI * 2) / 6) * (window.innerWidth < 768 ? 90 : 120) + (window.innerWidth < 768 ? 90 : 120),
+                                top: Math.sin((i * Math.PI * 2) / 6) * 120 + 120,
+                                left: Math.cos((i * Math.PI * 2) / 6) * 120 + 120,
                               }}
                             >
                               <div className="w-full h-full bg-[#CD853F]/20 backdrop-blur-sm rounded-xl transform rotate-45 border border-[#CD853F]/30" />

@@ -24,12 +24,7 @@ export default function Chat() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
-    if (messagesEndRef.current) {
-      const chatContainer = messagesEndRef.current.closest('.overflow-y-auto');
-      if (chatContainer) {
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-      }
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
 
   useEffect(() => {
