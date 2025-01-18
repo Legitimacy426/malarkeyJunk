@@ -98,7 +98,7 @@ export default function Hero() {
       <FloatingTrash delay={1} x={-200} y={300} color="#2F4F2F" />
       <FloatingTrash delay={2} x={300} y={150} color="#CD853F" />
 
-      <div className="container px-4 md:px-6 relative z-10 py-12">
+      <div className="container px-4 md:px-6 max-w-7xl relative z-10 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0 }}
