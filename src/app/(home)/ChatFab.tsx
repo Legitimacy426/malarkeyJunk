@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Chat from './Chat'
+
 
 const TrashIcon = () => (
   <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@ export default function ChatFab() {
             transition={{ type: 'spring', damping: 25, stiffness: 350 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
           >
-            <Chat onClose={() => setIsOpen(false)} />
+
           </motion.div>
         )}
       </AnimatePresence>
